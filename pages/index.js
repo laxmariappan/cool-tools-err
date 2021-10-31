@@ -25,5 +25,6 @@ export async function getStaticProps() {
     //  passed to the `Home` component
     return {
       props: { data },
+      revalidate: 10, 
     };
   }
