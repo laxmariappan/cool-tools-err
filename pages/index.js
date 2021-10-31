@@ -1,30 +1,32 @@
-import Head from 'next/head'
-import { getToolData } from "../lib/data";
+export default function Form() {
+  const registerUser = async event => {
+    event.preventDefault()
 
-export default function Test({data}){
-  let id =1
+    const res = await fetch('/api/add', {
+      body: JSON.stringify({
+        name: event.target.name.value,
+        link: event.target.link.value,
+        category: event.target.category.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    })
+
+    const result = await res.json()
+     console.log(result)
+    // result.user => 'Ada Lovelace'
+  }
+
   return (
-    <div>
-  <h2>results</h2>
-{data.map((tool,id)=>(
-  <li key={id}>
-    <h3>{tool.name}</h3>
-    <span>{tool.category}</span>
-  </li>
-))}
-    </div>
+    <form onSubmit={registerUser}>
+      <label htmlFor="name">Name</label>
+      <input id="name" name="name" type="text" autoComplete="name" required />
+      <input id="link" name="link" type="text" autoComplete="link" required />
+      <input id="category" name="category" type="text" autoComplete="category" required />
+      <button type="submit">Add</button>
+    </form>
+    
   )
-}
-
-
-export async function getStaticProps() {
-    // Get external data from the file system, API, DB, etc.
-    const data = await getToolData();
-  
-    // The value of the `props` key will be
-    //  passed to the `Home` component
-    return {
-      props: { data },
-      revalidate: 10, 
-    };
   }
