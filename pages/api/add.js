@@ -3,7 +3,7 @@ import { crud } from '../../lib/data'
 
 
 
-export default (req, res) => {
+export default function add(req, res) {
   /* add new Row data */ 
   const newRow = { 
     Name: req.body.name, 
