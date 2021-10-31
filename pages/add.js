@@ -15,6 +15,7 @@ export default function Form() {
       })
   
       const result = await res.json()
+       console.log(result)
       // result.user => 'Ada Lovelace'
     }
   
@@ -26,5 +27,6 @@ export default function Form() {
         <input id="category" name="category" type="text" autoComplete="category" required />
         <button type="submit">Add</button>
       </form>
+      
     )
   }
