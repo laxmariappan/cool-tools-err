@@ -10,12 +10,10 @@ export default function add(req, res) {
     Link: req.body.link, 
     Category: req.body.category, 
   }
-  crud('add',newRow)
+  result = crud('add',newRow)
   res.statusCode = 200
   res.json({ 
     code: 200,
-    data: {
-      message: 'Hello'
-     }
+    result:result,
   })
 }
