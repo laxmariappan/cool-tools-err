@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { addToolData } from '../../lib/data'
+import { crud } from '../../lib/data'
 
 
 
@@ -10,7 +10,7 @@ export default (req, res) => {
     Link: req.body.link, 
     Category: req.body.category, 
   }
-  addToolData(newRow)
+  crud('add',newRow)
   res.statusCode = 200
   res.json({ 
     code: 200,
