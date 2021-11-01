@@ -1,5 +1,5 @@
 export default function Form() {
-    const registerUser = async event => {
+    const addTool = async event => {
       event.preventDefault()
   
       const res = await fetch('/api/add', {
@@ -20,7 +20,7 @@ export default function Form() {
     }
   
     return (
-      <form onSubmit={registerUser}>
+      <form onSubmit={addTool}>
         <label htmlFor="name">Name</label>
         <input id="name" name="name" type="text" autoComplete="name" required />
         <input id="link" name="link" type="text" autoComplete="link" required />
